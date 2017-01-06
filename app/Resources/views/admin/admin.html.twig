@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+<div class="navigation ">
+  <nav>
+    <ul class="sf-menu">
+     <li ><a href="/">Accueil</a></li>
+     <li><a href="menus">Menus</a></li>
+     <li><a href="contact"> Contact</a></li>
+     <li class="current"><a href="admin"> Administration</a></li>
+    <li class="current"><a href="admin"> Connexion</a></li>
+   </ul>
+  </nav>
+  <div class="clear"></div>
+</div>
+{% endblock %}
+{% block body %}
+<!--=====================
+          Content
+======================-->
+
+<section class="content gallery pad1"><div class="ic">More Website Templates @ TemplateMonster.com - July 30, 2014!</div>
+  <div class="container">
+    <div class="row">
+      <div class="grid_4">
+      <table class="table table-bordered table-stripped" style="width:1000px;" >
+      <a href="menus/ajoutMenu" style="margin-right:10px" class="btn" >Nouveau menu</a>
+
+      <h2> Les menus </h2>
+
+
+      <thead>
+        <td>Id</td>
+        <td>Titre</td>
+        <td>Desccription</td>
+        <td>Action</td>
+      </thead>
+      {% for plat in lesPlats %}
+      <tbody>
+        <td>{{plat.id}}</td>
+        <td><a href="{{ path('affichePlat', {'id': plat.id }) }}"> {{plat.titre}}</a></td>
+        <td>{{plat.description[:120]}}</td>
+        <td><a href="menus/modifMenu" ><span class="glyphicon glyphicon-pencil">Modifier</span></a> / <a href="menus/modifMenu" ><span class="glyphicon glyphicon-pencil">Supprimer</span></a></td>
+      </tbody>
+      {% endfor %}
+      </table>
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

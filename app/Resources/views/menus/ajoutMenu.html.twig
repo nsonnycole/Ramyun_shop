@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+<div class="navigation ">
+  <nav>
+    <ul class="sf-menu">
+     <li class="current"><a href="/">Accueil</a></li>
+     <li><a href="/menus">Menus</a></li>
+     <li><a href="menus"> Contact</a></li>
+     <li><a href="/admin"> Administration</a></li>
+   </ul>
+  </nav>
+  <div class="clear"></div>
+</div>
+{% endblock %}
+{% block body %}
+<section class="content"><div class="ic">More Website Templates @ TemplateMonster.com - July 30, 2014!</div>
+<div class="container">
+    <div class="row">
+      <div class="grid_7">
+        <div class="blog">
+        <div id="bookingForm"> {{ form_start(form) }}
+          <h2>Ajout d'un menu</h2>
+
+          <div class="tmTextarea">
+            {{form_errors(form.titre)}}
+            {{ form_widget(form.titre,{'attr': {'placeholder': 'Titre:'}}) }}
+          </div>
+          <div class="tmTextarea">
+            {{form_errors(form.description)}}
+            {{ form_widget(form.description,{'attr': {'placeholder': 'Description:'}}) }}
+          </div>
+          <div class="tmTextarea">
+            {{form_errors(form.ingredients)}}
+            {{ form_widget(form.ingredients,{'attr': {'placeholder': 'Ingrédients:'}}) }}
+          </div>
+
+          <div class="tmTextarea">
+             {{form_errors(form.image)}}
+             {{ form_widget(form.image,{'attr': {'placeholder': 'Image:'}}) }}
+          </div>
+        <div class="ta__right">
+          <button class="btn" name="form[submit]" data-type="submit">Ajouter</button>
+        </div>
+
+    {{ form_end(form) }}
+    </div>
+      </div>
+    </div>
+</div>
+</section>
+{% endblock %}

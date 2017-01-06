@@ -1,0 +1,48 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        in_memory:
+            memory:
+                users:
+                    admin:
+                        password: admin
+                        roles: 'ROLE_ADMIN'
+
+        bdd_provider:
+            entity:
+                class: AppBundle:User
+                property: email
+
+    encoders:
+        AppBundle\Entity\User: plaintext
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        acl:
+            anonymous: ~
+            # http_basic: ~
+            provider: bdd_provider
+            form_login:
+                login_path: menu_login # affiche le form
+                check_path: menu_check # vérification des
+                  # identifiants fournis
+                default_target_path: admin # Chemin de redirection
+                username_parameter: _email
+
+        pattern:
+            # Première méthode (exemple pattern)
+            pattern: /admin
+            anonymous: false
+            http_basic: ~
+            provider: in_memory
+
+
+    access_control:
+        - { path: /admin, roles: IS_AUTHENTICATED_REMEMBERED }

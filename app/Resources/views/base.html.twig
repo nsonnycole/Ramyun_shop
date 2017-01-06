@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Ramyun_shop{% endblock %}</title>
+        {% block stylesheets %}
+        {% endblock %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        <link href="{{ asset('booking/css/booking.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/stuck.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/touchTouch.css') }}" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!--<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="<?php echo $view['assets']->getUrl('css/style.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $view['assets']->getUrl('css/form.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $view['assets']->getUrl('css/font-awesome.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $view['assets']->getUrl('css/grid.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $view['assets']->getUrl('css/superfish.css') ?>" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $view['assets']->getUrl('css/stucks.css') ?>" rel="stylesheet" type="text/css" />
+        -->
+
+    </head>
+    <body>
+      <header>
+      <!--==============================
+                  Stuck menu
+      =================================-->
+
+        <section id="stuck_container">
+          <div class="container">
+            <div class="row">
+              <div class="grid_12">
+              <h1>
+                <a href="/">
+                  <img src="{{ asset('images/logo.png') }}"  alt="Logo alt" />
+                </a>
+              </h1>
+                {% block header %}{% endblock %}
+              </div>
+            </div>
+          </div>
+        </section>
+      </header>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+        <script>
+         $(document).ready(function(){
+
+          $().UItoTop({ easingType: 'easeOutQuart' });
+          $('#stuck_container').tmStickUp({});
+          $('.gallery .gall_item').touchTouch();
+
+          });
+
+          $(function (){
+                $('#bookingForm').bookingForm({
+                    ownerEmail: '#'
+                });
+            })
+            $(function() {
+           $('#bookingForm input, #bookingForm textarea').placeholder();
+          });
+
+        </script>
+        {% endblock %}
+        <!--==============================
+                      footer
+        =================================-->
+        <footer id="footer">
+          <div class="container">
+            <div class="row">
+              <div class="grid_12">
+                <div class="socials">
+                  <a href="#" class="fa fa-twitter"></a>
+                  <a href="#" class="fa fa-facebook"></a>
+                  <a href="#" class="fa fa-google-plus"></a>
+                  <a href="#" class="fa fa-pinterest"></a>
+                </div>
+                <div class="copyright"><span class="brand">Ramyun Shop </span> &copy; <span id="copyright-year"></span> | 2016 - 2017 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+        </body>
+      </html>

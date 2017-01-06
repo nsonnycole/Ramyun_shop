@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+<div class="navigation ">
+  <nav>
+    <ul class="sf-menu">
+     <li ><a href="/">Accueil</a></li>
+     <li><a href="menus">Menus</a></li>
+     <li><a href="contact"> Contact</a></li>
+     <li class="current"><a href="admin"> Administration</a></li>
+    <li class="current"><a href="admin"> Connexion</a></li>
+   </ul>
+  </nav>
+  <div class="clear"></div>
+</div>
+{% endblock %}
+{% block body %}
+<section class="content gallery pad1"><div class="ic">More Website Templates @ TemplateMonster.com - July 30, 2014!</div>
+<div class="container">
+  <div class="row">
+  <h2> Connexion </h2>
+    <div class="grid_4">
+        <form action="{{ path('menu_check') }}" method="post">
+          <div class="tmTextarea">
+            <input type="text" id="username" name="email" value="" placeholder="Email:"/>
+          </div>
+          <div class="tmTextarea">
+            <input type="password" id="password" name="password" placeholder="Mot de passe:" />
+          </div>
+            <button class="btn"type="submit">Connexion</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

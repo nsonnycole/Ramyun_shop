@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+  {{plat.titre}}
+{% endblock %}
+{% block header %}
+<div class="navigation ">
+  <nav>
+    <ul class="sf-menu">
+     <li><a href="/">Accueil</a></li>
+     <li class="current"><a href="/menus">Menus</a></li>
+     <li><a href="/menus"> Contact</a></li>
+    <li><a href="/admin"> Administration</a></li>
+   </ul>
+  </nav>
+  <div class="clear"></div>
+</div>
+{% endblock %}
+{% block body %}
+
+<!--=====================
+            Content
+  ======================-->
+  <section class="content"><div class="ic">More Website Templates @ TemplateMonster.com - July 30, 2014!</div>
+  <div class="container">
+      <div class="row">
+        <div class="grid_7">
+          <div class="blog">
+            <h2><a href="#">{{plat.titre}}</a></h2>
+            <img src="{{ plat.image }}" alt="">
+            <p>{{plat.description}}</p>
+            <p><h3>Les ingrédients : </h3><br>{{plat.ingredients}}</p>
+            <table>
+            <tbody>
+
+                <tr>
+                <td><span class="fa fa-comments"></span>Commentaires</td>
+                <td colspan="2">
+                <a href=""><div class="fa fa-thumbs-up"></div></a>0
+
+                <td class="rating rating2"><!--
+
+                --><a href="#5" value="5" title="Give 5 stars">★</a><!--
+                --><a href="#4" value="4" title="Give 4 stars">★</a><!--
+                --><a href="#3" value="3" title="Give 3 stars">★</a><!--
+                --><a href="#2" value="2" title="Give 2 stars">★</a><!--
+                --><a href="#1" value="1" title="Give 1 star">★</a>
+              </td>
+              <td> Moyenne : {{ get_avg_menu_like(plat.id) }}<br>
+              Total : {{ get_total_menu_like(plat.id) }}</td>
+              </tr>
+            </tbody>
+
+
+          </table>
+
+          </div>
+          </div>
+          <div class="grid_4">
+            <div id="bookingForm"> {{ form_start(form) }}
+
+              <h2>Notez cette recette</h2>
+              <div class="tmInput">
+              {{form_errors(form.user)}}
+              {{ form_widget(form.user,{'attr': {'placeholder': 'Votre nom:'}}) }}
+              </div><br>
+
+              <div class="tmInput">
+                <p>&nbsp;&nbsp;Votre note :
+              {{form_errors(form.note)}}
+              {{ form_widget(form.note) }}</p>
+              </div><br>
+
+            <div class="ta__right">
+                <button class="btn" name="form[submit]" data-type="submit">Envoyer</button>
+            </div>
+          {{ form_end(form) }}
+          </div>
+      </div>
+    </div>
+      <a style="margin-right:10px" href-"" class="btn" >Précédent</a><a href-"" class="btn" >Suivant</a>
+  </section>
+{% endblock %}
